@@ -65,6 +65,8 @@ DEBUG: packageFiles with updates (repository=local)
 
 See also: `debug-1.jsonl`
 
+See also: `debug-1.jsonl`
+
 ## SCENARIO 2: `minimumReleaseAge` has been met for v0.1.1
 
 Note lack of `isPending`
@@ -117,6 +119,8 @@ DEBUG: packageFiles with updates (repository=local)
        }
 ```
 
+
+See also: `debug-2.jsonl`
 
 ## SCENARIO 3: `minimumReleaseAge` has been met for v0.1.1 and has NOT been met for v0.2.0
 
@@ -171,6 +175,7 @@ DEBUG: packageFiles with updates (repository=local)
        }
 ```
 
+See also: `debug-3.jsonl`
 
 ## SCENARIO 4: `minimumReleaseAge` has been met for v0.1.1 and has been met for v0.2.0
 
@@ -221,3 +226,58 @@ DEBUG: packageFiles with updates (repository=local)
          ]
        }
 ```
+
+See also: `debug-4.jsonl`
+
+## SCENARIO 5: v0.1.2 has no `releaseTimestamp`
+
+> [!CAUTION]
+> This release is created immediately.
+>
+> Related: https://github.com/renovatebot/renovate/discussions/38290 / https://github.com/renovatebot/renovate/discussions/38348
+
+```
+DEBUG: packageFiles with updates (repository=local)
+       "config": {
+         "regex": [
+           {
+             "deps": [
+               {
+                 "depName": "some-package",
+                 "currentValue": "v0.1.0",
+                 "datasource": "custom.localExample",
+                 "versioning": "semver-coerced",
+                 "replaceString": "v0.1.0",
+                 "updates": [
+                   {
+                     "bucket": "non-major",
+                     "newVersion": "0.1.2",
+                     "newValue": "0.1.2",
+                     "newMajor": 0,
+                     "newMinor": 1,
+                     "newPatch": 2,
+                     "updateType": "patch",
+                     "isBreaking": true,
+                     "branchName": "renovate/some-package-0.x"
+                   }
+                 ],
+                 "packageName": "some-package",
+                 "warnings": [],
+                 "currentVersion": "0.1.0",
+                 "currentVersionTimestamp": "2025-09-23T09:55:29.558Z",
+                 "currentVersionAgeInDays": 10,
+                 "isSingleVersion": true,
+                 "fixedVersion": "v0.1.0"
+               }
+             ],
+             "matchStrings": ["(?<currentValue>\\S+)"],
+             "depNameTemplate": "some-package",
+             "datasourceTemplate": "custom.localExample",
+             "versioningTemplate": "semver-coerced",
+             "packageFile": "packagefile.txt"
+           }
+         ]
+       }
+```
+
+See also: `debug-5.jsonl`
