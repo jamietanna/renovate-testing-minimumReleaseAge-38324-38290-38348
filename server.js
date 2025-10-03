@@ -1,7 +1,6 @@
 // Co-authored-by: gpt-oss:20b
 // With inspiration from https://secustor.dev/blog/renovate_custom_datasources/ and https://docs.renovatebot.com/modules/datasource/custom/#usage
 
-const { ReleaseIpamPoolAllocationCommand } = require('@aws-sdk/client-ec2');
 const http = require('http');
 
 const now = new Date();
